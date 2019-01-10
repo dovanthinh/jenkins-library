@@ -18,8 +18,8 @@ def getPkgInfo(pkg) {
 // The function will check the condition that the pkg can be deployed on server?
 def checkPkgPermission(pkgName, srv) {
     jPkg = new jenkinsPkg()
-    String jobName = env.JOB_NAME
-    //jobName = "ADM-tools"
+    //String jobName = env.JOB_NAME
+    jobName = "ADM-tools"
     def pkgAllowList
     def allowFlag = 0
     try {
