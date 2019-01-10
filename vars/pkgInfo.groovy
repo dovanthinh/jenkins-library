@@ -16,6 +16,7 @@ def getPkgInfo(pkg) {
 // The function will check the condition that the pkg can be deployed on server?
 def checkPkgPermission(pkgName, srv) {
     String jobName = env.JOB_NAME
+    println jobName
     def pkgAllowList
     def allowFlag = 0
     try {
@@ -32,6 +33,7 @@ def checkPkgPermission(pkgName, srv) {
         if (srv == srv_allow)
             allowFlag += 1
     }
+    println allowdFlag
     if (allowFlag == 0) {
         error("$pkgName is not allowed")
     }
