@@ -1,3 +1,5 @@
+import jenkinsPkg
+
 // The funcion will return information of package (pkgName, pkgVer)
 def getPkgInfo(pkg) {
     def pkgInfo = []
@@ -15,13 +17,14 @@ def getPkgInfo(pkg) {
 
 // The function will check the condition that the pkg can be deployed on server?
 def checkPkgPermission(pkgName, srv) {
+    jPkg = new jenkinsPkg()
     String jobName = env.JOB_NAME
-    println jobName
+    //jobName = "ADM-tools"
     def pkgAllowList
     def allowFlag = 0
     try {
-        pkgAllowList = jenkinsPkg.allowList.get(jobName).get("PKGALLOWLIST").tokenize(" ")
-        srvAllowList = jenkinsPkg.allowList.get(jobName).get("SRVALLOWLIST").tokenize(" ")
+        pkgAllowList = jPkg.allowList.get(jobName).get("PKGALLOWLIST").tokenize(" ")
+        srvAllowList = jPkg.allowList.get(jobName).get("SRVALLOWLIST").tokenize(" ")
     } catch(exp) {
         error("Allowlist for this job is NOT set")
     }
