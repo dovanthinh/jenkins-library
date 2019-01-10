@@ -33,12 +33,12 @@ def checkPkgPermission(pkgName, srv) {
         if (srv == srv_allow)
             allowFlag += 1
     }
-    println allowdFlag
-    if (allowFlag == 0) {
-        error("$pkgName is not allowed")
-    }
-    else if (alllowFlag == 1) {
-        eroor("$srv is not allowed")
-    }
+    return allowFlag
+//    if (allowFlag == 0) {
+//        error("$pkgName is not allowed")
+//    }
+//    else if (alllowFlag == 1) {
+//        eroor("$srv is not allowed")
+//    }
 }
 
