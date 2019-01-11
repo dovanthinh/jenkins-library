@@ -1,4 +1,4 @@
-import jenkinsPkg
+//import jenkinsPkg
 
 // The funcion will return information of package (pkgName, pkgVer)
 def getPkgInfo(pkg) {
@@ -17,29 +17,31 @@ def getPkgInfo(pkg) {
 
 // The function will check the condition that the pkg can be deployed on server?
 def checkPkgPermission(pkgName, srv) {
-    jPkg = new jenkinsPkg()
+    //jPkg = new jenkinsPkg()
     //String jobName = env.JOB_NAME
     jobName = "ADM-tools"
     def pkgAllowList
     def allowFlag = 0
     try {
-        pkgAllowList = jPkg.allowList.get(jobName).get("PKGALLOWLIST").tokenize(" ")
-        srvAllowList = jPkg.allowList.get(jobName).get("SRVALLOWLIST").tokenize(" ")
+        pkgAllowList = jenkinsPkg.allowList.get(jobName).get("PKGALLOWLIST").tokenize(" ")
+        srvAllowList = jenkinsPkg.allowList.get(jobName).get("SRVALLOWLIST").tokenize(" ")
     } catch(exp) {
         error("Allowlist for this job is NOT set")
     }
     for (pkg_allow in pkgAllowList) {
-        if (pkgName == pkg_allow)
-            allowFlag += 1			
+        if (pkgName == pkg_allow) {
+            allowFlag += 1		
+        }	
     }
     for (srv_allow in srvAllowList) {
-        if (srv == srv_allow)
+        if (srv == srv_allow) {
             allowFlag += 1
+        }
     }
     if (allowFlag < 2) {
         error("$pkgName is not allowded to install on $srv")
     }
-	else {
-		println "$pkgName is allowed to install on $srv"
-	}
+    else {
+        println "$pkgName is allowed to install on $srv"
+    }
 }
