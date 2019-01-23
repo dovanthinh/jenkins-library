@@ -12,4 +12,3 @@ def getPkgInfo(pkg) {
     pkgInfo.add(pkgVer)
     return pkgInfo
 }
-
