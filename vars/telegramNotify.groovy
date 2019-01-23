@@ -1,6 +1,6 @@
 def notify(JENKINSJOB, PKG, SERVER, STATUS) {
    BOT_TOKEN="744656308:AAE50sZTFOokn7f1hLTg5JiX2VBUQr14drA"
-   MESSAGE = """***JenkinsJob: $JENKINSJOB***
+   MESSAGE = """*** JenkinsJob: $JENKINSJOB ***
    - DeployedPkg:   $PKG
    - OnServer: $SERVER
    - Status: $STATUS
@@ -10,3 +10,5 @@ def notify(JENKINSJOB, PKG, SERVER, STATUS) {
    Thread.start { System.err << proc.err }
    proc.waitFor()
 }
+
+//notify("ADM-tools", "trungop=1.22", "fw-web-dev", "SUCCESS")
